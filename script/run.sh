@@ -1,1 +1,1 @@
-python model.py --config_file /home/zhangqi/project/RUCM3ED/config/RUCM3ED.yaml --version train
+python model.py --config_file /home/zhangqi/project/2023_MERC/config/RUCM3ED.yaml --version test-image_bind

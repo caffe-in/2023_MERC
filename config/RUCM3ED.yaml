@@ -1,11 +1,13 @@
 max_seq_length: 40
 pretrained_path: "/home/pretrains/pt/bert-base-chinese"
-file_path: "/home/zhangqi/project/RUCM3ED/dataset/RUCM3ED/annotation.txt"
-batch_size: 4
-version: 0
+file_path: "/home/zhangqi/project/2023_MERC/dataset/RUCM3ED/annotation.txt"
+batch_size: 8
+version: train-image_bind
 max_epochs: 4
 devices: 1
 mode: test
 train_val_test_ratio: [0.8,0.1,0.1]
-
+emb_path: /home/zhangqi/project/2023_MERC/dataset/RUCM3ED/emb
+label_path: /home/zhangqi/project/2023_MERC/dataset/RUCM3ED/label.txt
+Image_bind: True
 
