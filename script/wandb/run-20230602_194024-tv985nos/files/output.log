@@ -1,0 +1,157 @@
+Some weights of the model checkpoint at /home/pretrains/pt/bert-base-chinese were not used when initializing BertModel: ['cls.seq_relationship.weight', 'cls.predictions.transform.LayerNorm.bias', 'cls.predictions.decoder.weight', 'cls.predictions.bias', 'cls.predictions.transform.LayerNorm.weight', 'cls.predictions.transform.dense.bias', 'cls.seq_relationship.bias', 'cls.predictions.transform.dense.weight']
+- This IS expected if you are initializing BertModel from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing BertModel from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+You are using a CUDA device ('NVIDIA GeForce RTX 3090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3,4,5,6,7]
+  | Name  | Type      | Params
+------------------------------------
+0 | model | BertModel | 102 M
+1 | l1    | Dropout   | 0
+2 | l2    | Linear    | 5.4 K
+------------------------------------
+102 M     Trainable params
+0         Non-trainable params
+102 M     Total params
+409.092   Total estimated model params size (MB)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 0: 100%|██████████████████████████████████████████████████████████████████████████| 1743/1743 [01:02<00:00, 27.89it/s, v_num=9-40]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 1: 100%|██████████████████████████████████████████████████████████| 1743/1743 [01:02<00:00, 27.95it/s, v_num=9-40, val_loss=1.270]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 2: 100%|██████████████████████████████████████████████████████████| 1743/1743 [01:01<00:00, 28.20it/s, v_num=9-40, val_loss=1.200]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Epoch 3: 100%|█| 1743/1743 [01:03<00:00, 27.37it/s, v_num=9-40, val_loss=1.170
+
+
+Validation DataLoader 0:  64%|████████▎    | 277/436 [00:02<00:01, 112.80it/s]
+`Trainer.fit` stopped: `max_epochs=4` reached.

@@ -1,0 +1,28 @@
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_setup.py:_flush():76] Current SDK version is 0.15.2
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_setup.py:_flush():76] Configure stats pid to 2924069
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_setup.py:_flush():76] Loading settings from /home/zhangqi/.config/wandb/settings
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_setup.py:_flush():76] Loading settings from /home/zhangqi/project/2023_MERC/script/wandb/settings
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'script/model.py', 'program': '/home/zhangqi/project/2023_MERC/script/model.py'}
+2023-06-02 19:40:24,955 INFO    MainThread:2924069 [wandb_init.py:_log_setup():507] Logging user logs to /home/zhangqi/project/2023_MERC/script/wandb/run-20230602_194024-tv985nos/logs/debug.log
+2023-06-02 19:40:24,956 INFO    MainThread:2924069 [wandb_init.py:_log_setup():508] Logging internal logs to /home/zhangqi/project/2023_MERC/script/wandb/run-20230602_194024-tv985nos/logs/debug-internal.log
+2023-06-02 19:40:24,956 INFO    MainThread:2924069 [wandb_init.py:init():547] calling init triggers
+2023-06-02 19:40:24,956 INFO    MainThread:2924069 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'learning_rate': 1e-05, 'batch_size': 8, 'max_epochs': 4, 'Image_bind': False}
+2023-06-02 19:40:24,956 INFO    MainThread:2924069 [wandb_init.py:init():596] starting backend
+2023-06-02 19:40:24,956 INFO    MainThread:2924069 [wandb_init.py:init():600] setting up manager
+2023-06-02 19:40:24,959 INFO    MainThread:2924069 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2023-06-02 19:40:24,961 INFO    MainThread:2924069 [wandb_init.py:init():606] backend started and connected
+2023-06-02 19:40:24,965 INFO    MainThread:2924069 [wandb_init.py:init():700] updated telemetry
+2023-06-02 19:40:24,998 INFO    MainThread:2924069 [wandb_init.py:init():737] communicating run to backend with 60.0 second timeout
+2023-06-02 19:40:25,825 INFO    MainThread:2924069 [wandb_run.py:_on_init():2177] communicating current version
+2023-06-02 19:40:26,643 INFO    MainThread:2924069 [wandb_run.py:_on_init():2186] got version response upgrade_message: "wandb version 0.15.3 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2023-06-02 19:40:26,643 INFO    MainThread:2924069 [wandb_init.py:init():787] starting run threads in backend
+2023-06-02 19:40:28,494 INFO    MainThread:2924069 [wandb_run.py:_console_start():2158] atexit reg
+2023-06-02 19:40:28,495 INFO    MainThread:2924069 [wandb_run.py:_redirect():2013] redirect: SettingsConsole.WRAP_RAW
+2023-06-02 19:40:28,495 INFO    MainThread:2924069 [wandb_run.py:_redirect():2078] Wrapping output streams.
+2023-06-02 19:40:28,495 INFO    MainThread:2924069 [wandb_run.py:_redirect():2103] Redirects installed.
+2023-06-02 19:40:28,496 INFO    MainThread:2924069 [wandb_init.py:init():829] run started, returning control to user process
+2023-06-02 19:45:22,250 WARNING MsgRouterThr:2924069 [router.py:message_loop():77] message_loop has been closed

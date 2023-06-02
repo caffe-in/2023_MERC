@@ -93,14 +93,18 @@ class PerDataMoudle(pl.LightningDataModule):
         
     def setup(self, stage: str) -> None:
         train_size = int(self.config.train_val_test_ratio[0] * len(self.dataset))
-        val_size = int(self.config.train_val_test_ratio[1] * len(self.dataset))
-        test_size = len(self.dataset) - train_size - val_size
-        self.train_dataset, self.val_dataset, self.test_dataset = random_split(self.dataset, [train_size, val_size, test_size])
-        print("filter datset start...")
-        print(f"the len of dataset before is {len(self.test_dataset)}")
-        self.test_dataset = self.filter_dataset(self.test_dataset)
-        print("filter datset end...")
-        print(f"the len of dataset after is {len(self.test_dataset)}")
+        val_size = len(self.dataset)-train_size
+        if stage in (None,"fit"):
+            self.train_dataset,self.val_dataset = random_split(self.dataset,[train_size,val_size])
+        elif stage in (None,"test"):
+            self.test_dataset = self.dataset
+            
+            # if filter
+            # print("filter datset start...")
+            # print(f"the len of dataset before is {len(self.test_dataset)}")
+            # self.test_dataset = self.filter_dataset(self.test_dataset)
+            # print("filter datset end...")
+            # print(f"the len of dataset after is {len(self.test_dataset)}")
     def filter_dataset(self,dataset):
         indices = [i for i in range(len(dataset)) if dataset[i]["label"]!=0]
         filter_dataset = data.Subset(dataset,indices)
@@ -209,15 +213,21 @@ def merge_json(folder_path,task="sentiment"):
 #                         "final_main_emo": "Neutral"
 #                     }
 #                 },
-def data_trans(file_path:str="../dataset/RUCM3ED/annotation.json",out_path="../dataset/RUCM3ED/",concat_num:int=3):
+def data_trans(file_path:str="../dataset/RUCM3ED/annotation.json",out_path="../dataset/RUCM3ED/",concat_num:int=3,config=None):
     with open(file_path,'r') as f:
         dic = json.load(f,object_pairs_hook=OrderedDict)
     print(type(dic))
     
     folder = os.path.dirname(file_path)
-    text_out_path = out_path+"text.txt"
-    audio_out_path = out_path+"audio.txt"
-    picture_out_path = out_path+"picture.txt"
+    if config is not None:
+        print(config.mode)
+        text_out_path = out_path+f"text/{config.mode}/text.txt"
+        audio_out_path = out_path+f"path/{config.mode}/audio.txt"
+        picture_out_path = out_path+f"path/{config.mode}/picture.txt"
+    else:
+        text_out_path = out_path+"text.txt"
+        audio_out_path = out_path+"path/audio.txt"
+        picture_out_path = out_path+"path/picture.txt"
     
     text_list = []
     audio_list = []
@@ -237,12 +247,11 @@ def data_trans(file_path:str="../dataset/RUCM3ED/annotation.json",out_path="../d
             sentences_name_list = list(sentences_name_list)
             sentence_list = list(sentence_list)
             if flag:
-                print(sentences_name_list[:2])
-                print(sentence_list[:2])
+                # print(sentences_name_list[:2])
+                # print(sentence_list[:2])
                 flag=False
             
             for index,sentence in enumerate(sentence_list):
-                print("this is sentence:",sentence)
                 sentence_name = sentences_name_list[index]
                 text = ""
                 start_time = sentence["StartTime"]
@@ -363,8 +372,26 @@ def get_audio(video_path,start_time,end_time):
 if __name__=="__main__":
 
     config = OmegaConf.load("/home/zhangqi/project/2023_MERC/config/RUCM3ED.yaml")
-    dm = PerDataMoudle(config)
-    # data_trans(file_path="/home/zhangqi/project/2023_MERC/dataset/MERC_Challenge_CCAC2023_train_set/train.json")
+    # dm = PerDataMoudle(config)
+    
+    # get the text and audio&picture path
+    # data_trans(file_path="/home/zhangqi/project/2023_MERC/dataset/MERC_Challenge_CCAC2023_train_set/train.json",config=config)
+    
+    print(config.mode)
+    # get the labels
+    
+    if config.mode=="test":
+        get_label(anotation_path="../dataset/RUCM3ED/text/test/text.txt",wirte_path="../dataset/RUCM3ED/text/test/label.txt")
+    elif config.mode=="train":
+        get_label(anotation_path="../dataset/RUCM3ED/text/train/text.txt",wirte_path="../dataset/RUCM3ED/text/train/label.txt")
+    # get the audio and picture
+
+    # if config.mode=="test":
+    #     write_picture(picture_message_path="/home/zhangqi/project/2023_MERC/dataset/RUCM3ED/path/test/picture.txt",out_path="/home/zhangqi/project/2023_MERC/dataset/RUCM3ED/image/test")
+    #     write_audio(audio_message_path="/home/zhangqi/project/2023_MERC/dataset/RUCM3ED/path/test/audio.txt",out_path="/home/zhangqi/project/2023_MERC/dataset/RUCM3ED/audio/test")
+    # elif config.mode=="train":
+    #     write_picture()
+    #     write_audio()
     # write_picture()
     #/home/zhangqi/project/2023_MERC/dataset/MERC_Challenge_CCAC2023_train_set/jinhun/jinhun_17.mp4	00:01:10:00	00:01:11:01
     # start_time_list = "00:01:10:00".split(":")

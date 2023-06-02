@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "model",
+            "type": "python",
+            "request": "launch",
+            "program": "model.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/script",
+            "args": [
+                "--config_file","/home/zhangqi/project/2023_MERC/config/RUCM3ED.yaml",
+                "--version","test-image_bind",
+                "--mode","test"
+            ]
+            
+        },
+        {
+            "name": "data_utility",
+            "type": "python",
+            "request": "launch",
+            "program": "data_utility.py",
+            "cwd": "${workspaceFolder}/script",
+            "console": "integratedTerminal",
+        }
+    ]
+}
